@@ -52,5 +52,5 @@ USER www
 EXPOSE 9000
 CMD ["php-fpm"]
 
-RUN composer install
+RUN composer dump-autoload && composer install
 # CMD php artisan serve
