@@ -52,5 +52,5 @@ USER www
 EXPOSE 9000
 CMD ["php-fpm"]
 
-RUN composer install --optimize-autoloader --no-dev
+RUN composer install --optimize-autoloader
 # CMD php artisan serve
