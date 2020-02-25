@@ -40,7 +40,7 @@ RUN groupadd -g 1000 www
 RUN useradd -u 1000 -ms /bin/bash -g www www
 
 # Install Dependencies for Laravel
-RUN composer install
+# RUN composer install
 
 # Copy existing application directory contents
 COPY . /var/www
@@ -54,6 +54,8 @@ USER www
 # Update dependencies
 RUN composer update --no-script
 
+#
+RUN composer dump-autoload
 
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
