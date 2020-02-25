@@ -52,7 +52,7 @@ COPY --chown=www:www . /var/www
 USER www
 
 # Update dependencies
-RUN composer update --no-script
+RUN composer update
 
 #
 RUN composer dump-autoload
