@@ -39,6 +39,9 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN groupadd -g 1000 www
 RUN useradd -u 1000 -ms /bin/bash -g www www
 
+# Install Dependencies for Laravel
+RUN composer install
+
 # Copy existing application directory contents
 COPY . /var/www
 
@@ -48,9 +51,13 @@ COPY --chown=www:www . /var/www
 # Change current user to www
 USER www
 
+# Update dependencies
+RUN composer update --no-script
+
+
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
 CMD ["php-fpm"]
 
-RUN composer dump-autoload && composer install && composer update
+
 # CMD php artisan serve
