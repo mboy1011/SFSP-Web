@@ -1,64 +1,101 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/icon/favicon-32x32.png">
-    <title>SFSP</title>
-    <!-- MCSS Offline -->
-    <link rel="stylesheet" href="./assets/css/materializecss.min.css">
-    <link rel="stylesheet" href="./assets/css/materializecss-icons.css">
-    <!-- Style CSS -->
-    <link rel="stylesheet" href="./assets/css/style.css">
-</head>
-<body>
-<header>
-    <nav>
-        <div class="nav-wrapper green">
-            <a href="#" class="brand-logo center"><img src="./assets/img/LOGO.png" alt="" srcset="" height="63px" width="63px"></a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="/login">Login <i class="material-icons medium left">power_settings_new</i></a></li>
-            </ul>
-        </div>
-        <ul class="sidenav" id="mobile-demo">
-            <li><a href="/login">Login <i class="material-icons medium left">power_settings_new</i></a></li>
-        </ul>
-    </nav>
-</header>
-<main>
-    <div class="container">
-        
-    </div>
-</main>
-<footer class="page-footer green">
-    <div class="container">
-        <div class="row">
-            <div class="col l6 s12">
-            <h5 class="white-text">Gingoog City Colleges</h5>
-            <p class="grey-text text-lighten-4">Barangay 24 - A, Purok 5, Gingoog City, 9014.</p>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>GCC-SFSP</title>
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+
+        <!-- Styles -->
+        <style>
+            html, body {
+                background-color: #fff;
+                color: #636b6f;
+                font-family: 'Nunito', sans-serif;
+                font-weight: 200;
+                height: 100vh;
+                margin: 0;
+            }
+
+            .full-height {
+                height: 100vh;
+            }
+
+            .flex-center {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
+
+            .position-ref {
+                position: relative;
+            }
+
+            .top-right {
+                position: absolute;
+                right: 10px;
+                top: 18px;
+            }
+
+            .content {
+                text-align: center;
+            }
+
+            .title {
+                font-size: 84px;
+            }
+
+            .links > a {
+                color: #636b6f;
+                padding: 0 25px;
+                font-size: 13px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            .m-b-md {
+                margin-bottom: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="flex-center position-ref full-height">
+            @if (Route::has('login'))
+                <div class="top-right links">
+                    @auth
+                        <a href="{{ url('/home') }}">Home</a>
+                    @else
+                        <a href="{{ route('login') }}">Login</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}">Register</a>
+                        @endif
+                    @endauth
+                </div>
+            @endif
+
+            <div class="content">
+                <img src="" alt="" srcset="" height="100px" width="100px">
+                <div class="title m-b-md">
+                    Gingoog City Colleges, Inc.
+                </div>
+
+                <div class="links">
+                    <a href="https://laravel.com/docs">Docs</a>
+                    <a href="https://laracasts.com">Laracasts</a>
+                    <a href="https://laravel-news.com">News</a>
+                    <a href="https://blog.laravel.com">Blog</a>
+                    <a href="https://nova.laravel.com">Nova</a>
+                    <a href="https://forge.laravel.com">Forge</a>
+                    <a href="https://vapor.laravel.com">Vapor</a>
+                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                </div>
             </div>
-            <div class="col l4 offset-l2 s12">
-            <h5 class="white-text">Social Media</h5>
-            <ul>
-                <li><a class="grey-text text-lighten-3" href="#!">Facebook</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Twitter</a></li>
-            </ul>
-            </div>
         </div>
-        </div>
-        <div class="footer-copyright">
-        <div class="container">
-        © 2020 United Faculty
-        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-        </div>
-        </div>
-</footer>
-    <!-- MCSS Offline -->
-    <script src="./assets/js/materialize-css.min.js"></script>
-    <script src="./assets/js/axios.min.js"></script>
-    <script type="text/javascript" charset="utf-8">
-        M.AutoInit();
-    </script>
-</body>
+    </body>
 </html>
